@@ -1,13 +1,15 @@
 const sql = require('mysql2/promise')
+const dotenv = require('dotenv')
+dotenv.config()
 
 
 
 async function getConnection()  {
     const connection = sql.createConnection({
-        host: 'sql12.freesqldatabase.com',
-        user: 'sql12712806',      // Replace with your MySQL username
-        password: 'jB79hjk3U6',  // Replace with your MySQL password
-        database: 'sql12712806',  // Replace with your database name
+        host: process.env.HOST,
+        user: process.env.NAME,      // Replace with your MySQL username
+        password: process.env.PASSWORD,  // Replace with your MySQL password
+        database: process.env.DATABASE,  // Replace with your database name
         // insecureAuth : true
     });
     return connection
