@@ -1,5 +1,4 @@
 
-const dotenv = require("dotenv")
 const app = require('./app')
 const connection = require('./db')
 
