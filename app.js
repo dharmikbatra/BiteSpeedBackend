@@ -13,12 +13,7 @@ app.use(express.urlencoded({extended:true, limit:'10kb'}))
 app.use(cors());
 
 function formatDate(date) {
-    // const year = date.getFullYear();
-    // const month = String(date.getMonth() + 1).padStart(2, '0');
-    // const day = String(date.getDate()).padStart(2, '0');
-    // return `${year}-${month}-${day}`;
     const isoString = date.toISOString();
-    // Replace the 'T' and 'Z' characters to fit SQL TIMESTAMP format
     return isoString.replace('T', ' ').substring(0, 19);
   }
 

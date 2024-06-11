@@ -2,7 +2,6 @@
 const app = require('./app')
 const connection = require('./db')
 
-dotenv.config()
 const port  = process.env.PORT || 3000
 
 
