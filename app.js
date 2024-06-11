@@ -145,9 +145,12 @@ app.post("/identify" , async (req,res) => {
         }
         else{
             const newPrimaryEntry = await insertEntry(email,phoneNumber, null, 1)
-            NoOfPrimaryEntries.forEach(async element => {
-                await updateEntry(element.employee_id, 0, newPrimaryEntry.insertId)
-            });
+            await Promise.all(NoOfPrimaryEntries.map(async (item) => {
+                await updateEntry(item.employee_id, 0, newPrimaryEntry.insertId)
+            }));
+            for (let i = 0; i < NoOfPrimaryEntries.length; i++) {
+                await updateEntry(NoOfPrimaryEntries[i].employee_id, 0, newPrimaryEntry.insertId)
+            }
             finalPrimaryID = newPrimaryEntry.insertId
         }
     }
